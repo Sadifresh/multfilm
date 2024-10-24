@@ -1,0 +1,53 @@
+#include "TXLib.h"
+
+void drawFon()
+{
+
+}
+
+
+int main()
+{
+txCreateWindow (800, 600);
+
+
+
+    //фон
+    txSetColor (TX_BLUE);
+    txSetFillColor (TX_BLUE);
+    txRectangle(0,0,800,600);
+
+    //солнце
+    txSetColor (TX_YELLOW);
+    txSetFillColor (TX_YELLOW);
+    txCircle(275,120,50);
+
+    //облако
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txEllipse(505,95,690,145);
+
+    //дом
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txRectangle (210, 220, 380, 390);
+
+    POINT kr[3] = {{210, 220}, {300, 120}, {380, 220}};
+    txPolygon (kr, 3);
+
+
+    //txLine (300, 120, 450, 60);
+    //txLine (450, 60, 515 ,130 );
+    //txLine (380,220, 515, 130);
+
+
+    txLine (380, 390, 515, 290);
+    txLine (515, 290, 515, 130);
+
+
+
+
+txTextCursor (false);
+return 0;
+}
+
