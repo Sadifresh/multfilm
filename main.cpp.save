@@ -2,47 +2,67 @@
 
 void drawFon()
 {
+    txSetColor (TX_BLUE);
+    txSetFillColor (TX_BLUE);
+    txRectangle(0,0,800,600);
+}
+
+void drawSun(int x)
+{
+    txSetColor (TX_YELLOW);
+    txSetFillColor (TX_YELLOW);
+    txCircle(x,120,50);
+}
+
+void drawCloud(int x)
+{
+//x=455
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txEllipse(x+505-455,95,x+690-455,145);
+    txEllipse(x+455-455,100,x+560-455,140);
+    txEllipse(x+625-455,95,x+730-455,140);
+    txEllipse(x+510-455,70,x+670-455,120);
 
 }
 
+void drawHouse()
+{
+    txSetColor (TX_WHITE);
+    txSetFillColor (TX_YELLOW);
+    txRectangle (210, 220+170, 380, 390+170);
+    POINT stena[4] = {{380, 390+170}, {515, 290+170}, {515, 130+170}, {380,220+170}};
+    txPolygon (stena, 4);
+
+    txSetFillColor (TX_RED);
+    POINT kr[3] = {{210, 220+170}, {300, 120+170}, {380, 220+170}};
+    txPolygon (kr, 3);
+    POINT skat[4] = {{300, 120+170}, {450, 60+170}, {515 ,130+170}, {380,220+170}};
+    txPolygon (skat, 4);
+}
 
 int main()
 {
 txCreateWindow (800, 600);
 
+    int xSun=-100;
 
 
-    //фон
-    txSetColor (TX_BLUE);
-    txSetFillColor (TX_BLUE);
-    txRectangle(0,0,800,600);
+    while(xSun<900)
+    {
+        txBegin();
+        drawFon();
+        drawSun(xSun);
+        drawCloud();
+        drawHouse();
+        txEnd();
 
-    //солнце
-    txSetColor (TX_YELLOW);
-    txSetFillColor (TX_YELLOW);
-    txCircle(275,120,50);
-
-    //облако
-    txSetColor (TX_WHITE);
-    txSetFillColor (TX_WHITE);
-    txEllipse(505,95,690,145);
-
-    //дом
-    txSetColor (TX_WHITE);
-    txSetFillColor (TX_WHITE);
-    txRectangle (210, 220, 380, 390);
-
-    POINT kr[3] = {{210, 220}, {300, 120}, {380, 220}};
-    txPolygon (kr, 3);
+        xSun += 2;
+        txSleep(10);
+    }
 
 
-    //txLine (300, 120, 450, 60);
-    //txLine (450, 60, 515 ,130 );
-    //txLine (380,220, 515, 130);
 
-
-    txLine (380, 390, 515, 290);
-    txLine (515, 290, 515, 130);
 
 
 
