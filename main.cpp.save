@@ -23,10 +23,18 @@ void drawCloud(int x)
     txEllipse(x+455-455,100,x+560-455,140);
     txEllipse(x+625-455,95,x+730-455,140);
     txEllipse(x+510-455,70,x+670-455,120);
-
 }
-
-void drawHouse()
+void drawCloud2(int x)
+{
+ //x=455
+ txSetColor (TX_WHITE);
+    txSetFillColor (TX_WHITE);
+    txEllipse(x-70+455,30,x-160+455,100);
+    txEllipse(x-125+455,30,x-210+455,90);
+    txEllipse(x-10+455,30,x-100+455,100);
+    txEllipse(x-60+455,10,x-170+455,70);
+}
+void drawhouse()
 {
     txSetColor (TX_WHITE);
     txSetFillColor (TX_YELLOW);
@@ -40,27 +48,51 @@ void drawHouse()
     POINT skat[4] = {{300, 120+170}, {450, 60+170}, {515 ,130+170}, {380,220+170}};
     txPolygon (skat, 4);
 }
+void drawboll()
+{
+ txLine(
 
+
+
+
+
+}
 int main()
 {
 txCreateWindow (800, 600);
 
     int xSun=-100;
-
+    int xCloud=1000;
+    int xCloud2=1000;
 
     while(xSun<900)
     {
         txBegin();
         drawFon();
         drawSun(xSun);
-        drawCloud();
-        drawHouse();
+        drawCloud(xCloud);
+        drawCloud2(xCloud);
+        drawhouse();
         txEnd();
 
         xSun += 2;
+        xCloud -= 2;
         txSleep(10);
     }
 
+    while(xCloud>-500)
+    {
+        txBegin();
+        drawFon();
+        drawSun(xSun);
+        drawCloud(xCloud);
+        drawhouse();
+        txEnd();
+
+
+        xCloud -= 2;
+        txSleep(10);
+    }
 
 
 
